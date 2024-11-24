@@ -1,106 +1,164 @@
-/* Sekcja "Wojny i Ekspedycje" */
-#wydarzenia {
-    background: #2c3e50;
+/* Globalne style */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1a1a1a;
     color: #ecf0f1;
+    line-height: 1.6;
+    padding: 0;
 }
 
-#wydarzenia h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.event-item {
-    background-color: #34495e;
-    margin: 10px 0;
+.navbar {
+    background: #2d3a3b;
     padding: 20px;
-    border-radius: 8px;
-}
-
-/* Sekcja Rankingi */
-#rankingi {
-    background: #1a242f;
-    color: #ecf0f1;
-}
-
-#rankingi h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
     text-align: center;
 }
 
-.ranking-item {
-    background-color: #34495e;
-    padding: 15px;
-    margin: 10px 0;
-    border-radius: 8px;
+.navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
 }
 
-/* Sekcja Galeria */
-#galeria {
-    background: #2c3e50;
+.navbar ul li {
+    margin: 0 20px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
     color: #ecf0f1;
+    font-size: 1.1rem;
+    transition: color 0.3s ease-in-out;
 }
 
-#galeria h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
+.navbar ul li a:hover {
+    color: #f39c12;
+}
+
+/* Banner */
+.banner {
+    background: url('https://www.example.com/banner-image.jpg') no-repeat center center/cover;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
 }
 
-.gallery-item {
-    background-color: #34495e;
+.banner-content {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 40px;
+    border-radius: 10px;
+}
+
+.banner h2 {
+    font-size: 3rem;
+    color: #f39c12;
+}
+
+.cta-button {
+    background-color: #f39c12;
+    color: #2c3e50;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: background 0.3s ease-in-out;
+}
+
+.cta-button:hover {
+    background-color: #e67e22;
+}
+
+/* Formularz rekrutacji */
+.form input {
+    padding: 10px;
     margin: 10px;
-    padding: 15px;
-    border-radius: 8px;
-}
-
-/* Sekcja Aktualności */
-#blog {
-    background: #1a242f;
-    color: #ecf0f1;
-}
-
-#blog h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.news-item {
+    width: 100%;
+    border-radius: 5px;
+    border: none;
     background-color: #34495e;
-    margin: 10px 0;
-    padding: 20px;
-    border-radius: 8px;
-}
-
-/* Sekcja Mapa */
-#mapa {
-    background: #2c3e50;
     color: #ecf0f1;
 }
 
-#mapa h2 {
+.form button {
+    padding: 10px 20px;
+    background-color: #f39c12;
+    border: none;
+    color: #2c3e50;
+    cursor: pointer;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.form button:hover {
+    background-color: #e67e22;
+}
+
+/* Sekcje */
+.section {
+    padding: 50px 0;
+}
+
+h2 {
     font-size: 2.5rem;
     margin-bottom: 20px;
     text-align: center;
+    color: #f39c12;
 }
 
+/* Członkowie */
+#membersList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.member {
+    background-color: #34495e;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    color: #ecf0f1;
+    transition: background 0.3s ease-in-out;
+}
+
+.member:hover {
+    background-color: #e67e22;
+}
+
+/* Mapa */
 #worldMap {
     background-color: #34495e;
-    margin-top: 20px;
     height: 400px;
     border-radius: 8px;
+    margin-top: 20px;
+    position: relative;
 }
 
-/* Style dla responsywności */
-@media screen and (max-width: 768px) {
-    .navbar ul {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .navbar ul li {
-        margin-bottom: 10px;
-    }
+#worldMap p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ecf0f1;
+    font-size: 1.5rem;
+}
+
+/* Footer */
+footer {
+    background-color: #2d3a3b;
+    padding: 20px;
+    text-align: center;
+}
+
+footer p {
+    color: #ecf0f1;
 }
