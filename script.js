@@ -1,57 +1,124 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Pobranie danych z LocalStorage i ich wyświetlanie
-    const membersList = document.getElementById('membersList');
-    const members = JSON.parse(localStorage.getItem('members')) || [];
+    
+    // 1. Ustawienia formularza rekrutacyjnego
+    const recruitForm = document.getElementById('recruitForm');
+    recruitForm.addEventListener('submit', handleRecruitmentFormSubmit);
 
-    function displayMembers() {
-        membersList.innerHTML = '';
-        members.forEach(member => {
-            const memberElement = document.createElement('div');
-            memberElement.classList.add('member');
-            memberElement.innerHTML = `
-                <h3>${member.name}</h3>
-                <p>Rola: ${member.role}</p>
-            `;
-            membersList.appendChild(memberElement);
+    // 2. Zarządzanie formularzem - zapis do "lokalnej bazy danych" (localStorage)
+    function handleRecruitmentFormSubmit(event) {
+        event.preventDefault();
+
+        const name = document.getElementById('name').value.trim();
+        const role = document.getElementById('role').value.trim();
+
+        if (name && role) {
+            // Zapisz dane użytkownika w localStorage
+            let members = JSON.parse(localStorage.getItem('members')) || [];
+            members.push({ name, role });
+            localStorage.setItem('members', JSON.stringify(members));
+
+            // Powiadomienie
+            showNotification(`Dziękujemy za rejestrację, ${name}! Twoja rola: ${role}.`, 'success');
+
+            // Resetowanie formularza
+            recruitForm.reset();
+            updateMembersList();
+        } else {
+            showNotification('Proszę wypełnić wszystkie pola!', 'error');
+        }
+    }
+
+    // 3. Funkcja wyświetlania powiadomień
+    function showNotification(message, type) {
+        const notification = document.createElement('div');
+        notification.classList.add('notification', type);
+        notification.textContent = message;
+
+        // Dodanie do DOM
+        document.body.appendChild(notification);
+
+        // Automatyczne usuwanie powiadomienia po 4 sekundach
+        setTimeout(() => notification.remove(), 4000);
+    }
+
+    // 4. Aktualizacja listy członków
+    function updateMembersList() {
+        const membersList = document.getElementById('members-list');
+        membersList.innerHTML = ''; // Wyczyść aktualną listę
+
+        let members = JSON.parse(localStorage.getItem('members')) || [];
+        
+        if (members.length === 0) {
+            membersList.innerHTML = '<li>Brak zarejestrowanych członków.</li>';
+        } else {
+            members.forEach((member, index) => {
+                const memberElement = document.createElement('li');
+                memberElement.innerHTML = `${index + 1}. <strong>${member.name}</strong> - <em>${member.role}</em>`;
+                membersList.appendChild(memberElement);
+            });
+        }
+    }
+
+    // 5. Inicjalizacja danych
+    updateMembersList();
+    
+    // 6. Dynamiczne dodawanie wydarzeń
+    const eventsContainer = document.getElementById('events-list');
+    const eventsData = [
+        { title: 'Wojna Terytorialna', date: '25 grudnia, 18:00' },
+        { title: 'Ekspedycja Bossa', date: '27 grudnia, 20:00' },
+        { title: 'Event PVP', date: '30 grudnia, 17:00' },
+    ];
+
+    function loadEvents() {
+        eventsContainer.innerHTML = ''; // Wyczyść poprzednie wydarzenia
+        eventsData.forEach(event => {
+            const eventElement = document.createElement('li');
+            eventElement.innerHTML = `<strong>${event.title}</strong>: ${event.date}`;
+            eventsContainer.appendChild(eventElement);
         });
     }
 
-    // Formularz rekrutacji
-    const recruitForm = document.getElementById('recruitForm');
-    recruitForm.addEventListener('submit', function (event) {
+    loadEvents();
+
+    // 7. Formularz logowania
+    const loginForm = document.getElementById('loginForm');
+    loginForm.addEventListener('submit', handleLoginFormSubmit);
+
+    function handleLoginFormSubmit(event) {
         event.preventDefault();
-        const name = document.getElementById('name').value;
-        const role = document.getElementById('role').value;
 
-        if (name && role) {
-            const newMember = { name, role };
-            members.push(newMember);
-            localStorage.setItem('members', JSON.stringify(members));
-            recruitForm.reset();
-            displayMembers();
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value.trim();
+
+        // Prosty mechanizm sprawdzający login
+        if (username === 'admin' && password === '1234') {
+            localStorage.setItem('loggedIn', true);
+            showNotification('Zalogowano pomyślnie!', 'success');
+            document.getElementById('loginModal').style.display = 'none';
         } else {
-            alert('Wszystkie pola muszą być wypełnione');
+            showNotification('Nieprawidłowy login lub hasło', 'error');
         }
+    }
+
+    // 8. Wykrywanie zalogowanego użytkownika i aktualizacja UI
+    const loggedIn = localStorage.getItem('loggedIn');
+    if (loggedIn) {
+        document.getElementById('loginBtn').style.display = 'none';
+        document.getElementById('logoutBtn').style.display = 'inline-block';
+    }
+
+    // 9. Obsługa logowania/wylogowywania
+    document.getElementById('logoutBtn').addEventListener('click', function () {
+        localStorage.removeItem('loggedIn');
+        location.reload(); // Odświeżenie strony po wylogowaniu
     });
 
-    // Inicjalizacja listy członków
-    displayMembers();
-
-    // Przykładowe wydarzenia
-    const events = [
-        { title: 'Bitwa o Fort Zima', date: '15 grudnia 2024', description: 'Bitwa o strategiczny fort w północnej części mapy.' },
-        { title: 'Wielki Najazd', date: '20 grudnia 2024', description: 'Wielka ekspedycja w głąb nieznanych terytoriów.' }
-    ];
-
-    const eventsList = document.getElementById('eventsList');
-    events.forEach(event => {
-        const eventItem = document.createElement('div');
-        eventItem.classList.add('event-item');
-        eventItem.innerHTML = `
-            <h3>${event.title}</h3>
-            <p>${event.date}</p>
-            <p>${event.description}</p>
-        `;
-        eventsList.appendChild(eventItem);
-    });
 });
+
+// Wysuwanie okna logowania
+function toggleLoginModal() {
+    const modal = document.getElementById('loginModal');
+    modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
+}
+
