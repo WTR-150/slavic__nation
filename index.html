@@ -6,87 +6,84 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Slavic Nation - New World</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
 </head>
 <body>
-
-    <!-- Nawigacja -->
+    <!-- Header -->
     <header>
-        <div class="navbar">
-            <h1 class="logo">Slavic Nation</h1>
-            <nav>
-                <ul>
-                    <li><a href="#home">Strona Główna</a></li>
-                    <li><a href="#rekrutacja">Rekrutacja</a></li>
-                    <li><a href="#czlonkowie">Członkowie</a></li>
-                    <li><a href="#wydarzenia">Wydarzenia</a></li>
-                    <li><a href="#rankingi">Rankingi</a></li>
-                    <li><a href="#blog">Aktualności</a></li>
-                    <li><a href="#premium">VIP</a></li>
-                </ul>
-            </nav>
+        <div class="logo">
+            <h1>Slavic Nation</h1>
         </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Strona Główna</a></li>
+                <li><a href="#rekrutacja">Rekrutacja</a></li>
+                <li><a href="#wydarzenia">Wydarzenia</a></li>
+                <li><a href="#czlonkowie">Członkowie</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <!-- Banner -->
-    <section id="home" class="banner">
-        <div class="banner-content">
-            <h2>Dołącz do Slavic Nation!</h2>
-            <p>Wejdź w świat *New World*, dołącz do naszej kompanii i zdobądź chwałę!</p>
-            <a href="#rekrutacja" class="cta-button">Zarejestruj się</a>
+    <!-- Home Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h2>Witaj w Slavic Nation!</h2>
+            <p>Dołącz do nas w świecie New World i zbuduj niezłomną potęgę!</p>
+            <a href="#rekrutacja" class="cta-btn">Dołącz do nas</a>
         </div>
     </section>
 
-    <!-- Sekcja rekrutacja -->
-    <section id="rekrutacja" class="section">
+    <!-- Recruitment Section -->
+    <section id="rekrutacja">
         <div class="container">
-            <h2>Rekrutacja</h2>
-            <form id="recruitForm" class="form">
-                <input type="text" id="name" placeholder="Imię" required>
-                <input type="text" id="role" placeholder="Rola w grze (np. DPS)" required>
-                <button type="submit">Zarejestruj się</button>
+            <h2>Formularz Rekrutacyjny</h2>
+            <form id="recruitForm">
+                <label for="name">Nick w grze:</label>
+                <input type="text" id="name" required>
+                <label for="role">Wybierz rolę:</label>
+                <select id="role">
+                    <option value="DPS">DPS</option>
+                    <option value="Tank">Tank</option>
+                    <option value="Healer">Healer</option>
+                </select>
+                <button type="submit" class="btn">Zarejestruj się</button>
             </form>
         </div>
     </section>
 
-    <!-- Sekcja VIP -->
-    <section id="premium" class="section premium">
+    <!-- Events Section -->
+    <section id="wydarzenia">
         <div class="container">
-            <h2>VIP Slavic Nation</h2>
-            <p>Zostań członkiem VIP i ciesz się ekskluzywnymi wydarzeniami oraz dostępem do specjalnych zasobów.</p>
-            <button class="cta-button">Dołącz do VIP</button>
-        </div>
-    </section>
-
-    <!-- Sekcja Wydarzenia -->
-    <section id="wydarzenia" class="section">
-        <div class="container">
-            <h2>Wydarzenia</h2>
-            <ul>
-                <li><strong>Wojna Terytorialna:</strong> 25 grudnia, 18:00</li>
-                <li><strong>Ekspedycja Bossa:</strong> 27 grudnia, 20:00</li>
+            <h2>Wydarzenia Kompanii</h2>
+            <ul id="events-list">
+                <!-- Wydarzenia załadowane dynamicznie -->
             </ul>
         </div>
     </section>
 
-    <!-- Ranking -->
-    <section id="rankingi" class="section">
+    <!-- Members Section -->
+    <section id="czlonkowie">
         <div class="container">
-            <h2>Top Gracze</h2>
-            <ul>
-                <li>1. GraczX - 1500 Punktów</li>
-                <li>2. GraczY - 1200 Punktów</li>
-                <li>3. GraczZ - 1100 Punktów</li>
+            <h2>Członkowie Kompanii</h2>
+            <ul id="members-list">
+                <!-- Lista członków ładowana z JS -->
             </ul>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="kontakt">
+        <div class="container">
+            <h2>Kontakt</h2>
+            <p>Skontaktuj się z nami na Discordzie lub przez naszą stronę!</p>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <p>&copy; 2024 Slavic Nation - Wszystkie prawa zastrzeżone</p>
-        </div>
+        <p>&copy; 2024 Slavic Nation - New World</p>
     </footer>
 
+    <script src="script.js"></script>
 </body>
 </html>
