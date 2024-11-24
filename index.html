@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
+
 <body>
     <!-- Nawigacja -->
     <header>
@@ -27,12 +29,32 @@
         </div>
     </header>
 
-    <!-- Sekcja banner -->
+    <!-- Banner -->
     <section id="home" class="banner">
         <div class="banner-content">
             <h2>Dołącz do Slavic Nation!</h2>
             <p>Wejdź w świat *New World*, dołącz do naszej kompanii i zdobądź chwałę!</p>
             <a href="#rekrutacja" class="cta-button">Zarejestruj się</a>
+        </div>
+    </section>
+
+    <!-- Sekcja rekrutacja -->
+    <section id="rekrutacja" class="section">
+        <div class="container">
+            <h2>Rekrutacja</h2>
+            <form id="recruitForm" class="form">
+                <input type="text" id="name" placeholder="Imię" required>
+                <input type="text" id="role" placeholder="Rola w grze" required>
+                <button type="submit">Zarejestruj się</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Sekcja członkowie -->
+    <section id="czlonkowie" class="section">
+        <div class="container">
+            <h2>Członkowie Kompanii</h2>
+            <div id="membersList"></div>
         </div>
     </section>
 
@@ -82,4 +104,5 @@
         </div>
     </footer>
 </body>
+
 </html>
