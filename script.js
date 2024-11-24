@@ -1,23 +1,54 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Formularz rekrutacyjny
+document.addEventListener('DOMContentLoaded', () => {
     const recruitmentForm = document.getElementById('recruitmentForm');
-    
-    recruitmentForm.addEventListener('submit', function(event) {
+    const successMessage = document.getElementById('successMessage');
+    const errorMessage = document.getElementById('errorMessage');
+    const membersList = document.getElementById('membersList');
+    const eventsList = document.getElementById('eventsList');
+    const guidesList = document.getElementById('guidesList');
+    const galleryList = document.getElementById('galleryList');
+
+    // Funkcja do dodawania członków do listy
+    function updateMembers() {
+        fetch('/members.json')
+            .then(response => response.json())
+            .then(data => {
+                membersList.innerHTML = data.map(member => `
+                    <div class="member">
+                        <h3>${member.nickname}</h3>
+                        <p>Discord: ${member.discord}</p>
+                        <p>Rola: ${member.role}</p>
+                    </div>
+                `).join('');
+            });
+    }
+
+    // Funkcja do obsługi formularza rekrutacyjnego
+    recruitmentForm.addEventListener('submit', (event) => {
         event.preventDefault();
         const nickname = document.getElementById('nickname').value;
         const discord = document.getElementById('discord').value;
         const role = document.getElementById('role').value;
 
-        // Wyświetlenie alertu po zapisaniu
-        alert(`Dziękujemy ${nickname} za rejestrację! Zostałeś zapisany jako ${role}.`);
-        
-        // Czyszczenie formularza
-        recruitmentForm.reset();
+        const data = { nickname, discord, role };
+
+        fetch('/rekrutacja', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(() => {
+            successMessage.style.display = 'block';
+            errorMessage.style.display = 'none';
+            recruitmentForm.reset();
+            updateMembers(); // Odświeżenie listy członków
+        })
+        .catch(() => {
+            successMessage.style.display = 'none';
+            errorMessage.style.display = 'block';
+        });
     });
 
-    // Animacja pojawiania się elementów
-    const fadeElements = document.querySelectorAll('.fade-in');
-    fadeElements.forEach(element => {
-        element.classList.add('visible');
-    });
+    // Wywołanie funkcji na starcie, aby załadować listę członków
+    updateMembers();
 });
