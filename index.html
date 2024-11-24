@@ -1,75 +1,150 @@
 <!DOCTYPE html>
 <html lang="pl">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slavic Nation - Dołącz do nas!</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Slavic Nation - New World</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
-
 <body>
+
+    <!-- Header -->
     <header>
         <div class="container">
-            <h1>Slavic Nation - Dołącz do naszej kompanii</h1>
+            <h1 class="logo">Slavic Nation</h1>
+            <nav>
+                <ul>
+                    <li><a href="#about">O nas</a></li>
+                    <li><a href="#history">Historia</a></li>
+                    <li><a href="#strength">Nasza Siła</a></li>
+                    <li><a href="#partners">Partnerzy</a></li>
+                    <li><a href="#recruitment">Rekrutacja</a></li>
+                    <li><a href="#events">Wydarzenia</a></li>
+                    <li><a href="#community">Społeczność</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
-    <main>
+    <!-- Banner -->
+    <section id="banner" class="full-screen-banner">
+        <div class="banner-content">
+            <h2>Witamy w Slavic Nation</h2>
+            <p>Dołącz do największej kompanii w grze New World!</p>
+            <a href="#recruitment" class="cta-button">Dołącz do nas</a>
+        </div>
+    </section>
+
+    <!-- O Kompanii -->
+    <section id="about" class="about-section">
         <div class="container">
-            <h2>Wypełnij formularz, aby dołączyć</h2>
-            <form id="joinForm">
-                <div class="form-group">
-                    <label for="nickname">Twój Nick:</label>
-                    <input type="text" id="nickname" name="nickname" required>
-                </div>
+            <h2>O Kompanii</h2>
+            <p>Slavic Nation to kompania oparta na zaufaniu, współpracy i wielkich ambicjach. Razem podbijamy nowe terytoria i zdobywamy potężne zasoby.</p>
+        </div>
+    </section>
 
-                <div class="form-group">
-                    <label for="role">Wybierz klasę:</label>
-                    <select id="role" name="role" required>
-                        <option value="">Wybierz klasę</option>
-                        <option value="tank">Tank</option>
-                        <option value="healer">Healer</option>
-                        <option value="dps">DPS</option>
-                    </select>
-                </div>
+    <!-- Historia -->
+    <section id="history" class="history-section">
+        <div class="container">
+            <h2>Nasza Historia</h2>
+            <p>Założyciele Slavic Nation stawiali na siłę drużyny oraz spryt w działaniu. Nasza historia to pasmo zwycięstw, które są wynikiem niezłomnej woli i determinacji w walce o dominację w New World.</p>
+        </div>
+    </section>
 
-                <div id="dps-weapons" class="form-group" style="display: none;">
-                    <label for="weapon">Wybierz broń:</label>
-                    <select id="weapon" name="weapon">
-                        <option value="">Wybierz broń</option>
-                        <option value="rapier">Rapier</option>
-                        <option value="firestaff">Fire Staff</option>
-                        <option value="greatsword">Greatsword</option>
-                        <option value="bow">Bow</option>
-                        <option value="musket">Musket</option>
-                        <option value="voidgauntlet">Void Gauntlet</option>
-                    </select>
-                </div>
+    <!-- Nasza Siła -->
+    <section id="strength" class="strength-section">
+        <div class="container">
+            <h2>Nasza Siła</h2>
+            <p>Posiadamy najlepszych wojowników, którzy w każdej chwili są gotowi do walki o przyszłość kompanii. Zajrzyj do naszej armii, by zobaczyć, kto jest częścią Slavic Nation!</p>
+        </div>
+    </section>
 
-                <div class="form-group">
-                    <label for="discord">Twój nick na Discordzie:</label>
-                    <input type="text" id="discord" name="discord" required>
-                </div>
+    <!-- Partnerzy -->
+    <section id="partners" class="partners-section">
+        <div class="container">
+            <h2>Nasze Partnerstwa</h2>
+            <p>Współpracujemy z najlepszymi organizacjami w grze, co pozwala nam być jeszcze silniejszymi. Razem wzmocniamy naszą pozycję w świecie New World.</p>
+        </div>
+    </section>
 
-                <button type="submit">Dołącz do Slavic Nation</button>
+    <!-- Rekrutacja -->
+    <section id="recruitment" class="recruitment-section">
+        <div class="container">
+            <h2>Rekrutacja</h2>
+            <form id="recruitmentForm">
+                <label for="nickname">Nick w grze:</label>
+                <input type="text" id="nickname" required>
+
+                <label for="discord">Nick na Discordzie:</label>
+                <input type="text" id="discord" required>
+
+                <label for="role">Wybierz rolę:</label>
+                <select id="role" required>
+                    <option value="DPS">DPS</option>
+                    <option value="Tank">Tank</option>
+                    <option value="Healer">Healer</option>
+                </select>
+
+                <button type="submit">Zarejestruj się</button>
             </form>
         </div>
+    </section>
 
-        <div id="members-list" class="members-list">
-            <h2>Członkowie Slavic Nation:</h2>
-            <ul id="members"></ul>
+    <!-- Wydarzenia -->
+    <section id="events" class="events-section">
+        <div class="container">
+            <h2>Wydarzenia</h2>
+            <div class="event-list">
+                <div class="event-item">
+                    <h3>Wojna o Terytorium</h3>
+                    <p>Data: 2024-12-01</p>
+                    <p>Godzina: 18:00</p>
+                    <button class="event-btn">Dołącz do wojny</button>
+                </div>
+                <div class="event-item">
+                    <h3>Ekspedycja do Ruin</h3>
+                    <p>Data: 2024-12-05</p>
+                    <p>Godzina: 20:00</p>
+                    <button class="event-btn">Dołącz do ekspedycji</button>
+                </div>
+            </div>
         </div>
-    </main>
+    </section>
 
+    <!-- Społeczność -->
+    <section id="community" class="community-section">
+        <div class="container">
+            <h2>Społeczność</h2>
+            <p>Wspólne rozmowy, porady i wymiana doświadczeń. Dołącz do naszego Discorda!</p>
+            <a href="https://discord.gg/SlavicNation" class="cta-button">Dołącz do Discorda</a>
+        </div>
+    </section>
+
+    <!-- Kontakt -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2>Kontakt</h2>
+            <p>Masz pytania? Skontaktuj się z nami!</p>
+            <form>
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+
+                <label for="message">Wiadomość:</label>
+                <textarea id="message" required></textarea>
+
+                <button type="submit">Wyślij wiadomość</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Stopka -->
     <footer>
         <div class="container">
-            <p>&copy; 2024 Slavic Nation. All rights reserved.</p>
+            <p>&copy; 2024 Slavic Nation. Wszystkie prawa zastrzeżone.</p>
         </div>
     </footer>
 
-    <script src="script.js"></script>
 </body>
-
 </html>
