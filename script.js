@@ -1,26 +1,48 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Przykładowe dane dla wydarzeń, rankingów, galerii i aktualności
+document.addEventListener('DOMContentLoaded', function () {
+    // Pobranie danych z LocalStorage i ich wyświetlanie
+    const membersList = document.getElementById('membersList');
+    const members = JSON.parse(localStorage.getItem('members')) || [];
+
+    function displayMembers() {
+        membersList.innerHTML = '';
+        members.forEach(member => {
+            const memberElement = document.createElement('div');
+            memberElement.classList.add('member');
+            memberElement.innerHTML = `
+                <h3>${member.name}</h3>
+                <p>Rola: ${member.role}</p>
+            `;
+            membersList.appendChild(memberElement);
+        });
+    }
+
+    // Formularz rekrutacji
+    const recruitForm = document.getElementById('recruitForm');
+    recruitForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const name = document.getElementById('name').value;
+        const role = document.getElementById('role').value;
+
+        if (name && role) {
+            const newMember = { name, role };
+            members.push(newMember);
+            localStorage.setItem('members', JSON.stringify(members));
+            recruitForm.reset();
+            displayMembers();
+        } else {
+            alert('Wszystkie pola muszą być wypełnione');
+        }
+    });
+
+    // Inicjalizacja listy członków
+    displayMembers();
+
+    // Przykładowe wydarzenia
     const events = [
-        { title: 'Wojna o Teren', date: '2024-12-01', description: 'Wielka bitwa o zasoby na wyspie!' },
-        { title: 'Ekspedycja na Wschód', date: '2024-12-05', description: 'Podróż w nieznane w poszukiwaniu skarbów!' }
+        { title: 'Bitwa o Fort Zima', date: '15 grudnia 2024', description: 'Bitwa o strategiczny fort w północnej części mapy.' },
+        { title: 'Wielki Najazd', date: '20 grudnia 2024', description: 'Wielka ekspedycja w głąb nieznanych terytoriów.' }
     ];
 
-    const rankings = [
-        { name: 'Gracz1', role: 'DPS', score: 1500 },
-        { name: 'Gracz2', role: 'Tank', score: 1400 }
-    ];
-
-    const news = [
-        { title: 'Nowa wojna nadchodzi!', content: 'Zbliżają się intensywne walki w regionie...' },
-        { title: 'Wielka ekspedycja', content: 'Dołącz do ekspedycji, aby zdobyć potężne nagrody!' }
-    ];
-
-    const gallery = [
-        { img: 'https://yourimageurl.com/1.jpg', caption: 'Bitwa w lesie' },
-        { img: 'https://yourimageurl.com/2.jpg', caption: 'Eksploracja ruin' }
-    ];
-
-    // Generowanie wydarzeń
     const eventsList = document.getElementById('eventsList');
     events.forEach(event => {
         const eventItem = document.createElement('div');
@@ -32,45 +54,4 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         eventsList.appendChild(eventItem);
     });
-
-    // Generowanie rankingów
-    const rankingsList = document.getElementById('rankingsList');
-    rankings.forEach(player => {
-        const rankingItem = document.createElement('div');
-        rankingItem.classList.add('ranking-item');
-        rankingItem.innerHTML = `
-            <h3>${player.name}</h3>
-            <p>Rola: ${player.role}</p>
-            <p>Punkty: ${player.score}</p>
-        `;
-        rankingsList.appendChild(rankingItem);
-    });
-
-    // Generowanie galerii
-    const galleryList = document.getElementById('galleryList');
-    gallery.forEach(item => {
-        const galleryItem = document.createElement('div');
-        galleryItem.classList.add('gallery-item');
-        galleryItem.innerHTML = `
-            <img src="${item.img}" alt="${item.caption}" />
-            <p>${item.caption}</p>
-        `;
-        galleryList.appendChild(galleryItem);
-    });
-
-    // Generowanie aktualności
-    const newsList = document.getElementById('newsList');
-    news.forEach(newsItem => {
-        const newsElement = document.createElement('div');
-        newsElement.classList.add('news-item');
-        newsElement.innerHTML = `
-            <h3>${newsItem.title}</h3>
-            <p>${newsItem.content}</p>
-        `;
-        newsList.appendChild(newsElement);
-    });
-
-    // Generowanie mapy świata (symulacja)
-    const worldMap = document.getElementById('worldMap');
-    worldMap.innerHTML = '<p>Interaktywna mapa świata pojawi się tutaj...</p>';
 });
