@@ -18,8 +18,10 @@
                     <li><a href="#rekrutacja">Rekrutacja</a></li>
                     <li><a href="#czlonkowie">Członkowie</a></li>
                     <li><a href="#wydarzenia">Wydarzenia</a></li>
-                    <li><a href="#poradniki">Poradniki</a></li>
+                    <li><a href="#rankingi">Rankingi</a></li>
                     <li><a href="#galeria">Galeria</a></li>
+                    <li><a href="#blog">Aktualności</a></li>
+                    <li><a href="#mapa">Mapa</a></li>
                 </ul>
             </nav>
         </div>
@@ -34,60 +36,43 @@
         </div>
     </section>
 
-    <!-- Sekcja rekrutacyjna -->
-    <section id="rekrutacja" class="section recruitment">
-        <div class="container">
-            <h2>Rekrutacja</h2>
-            <form id="recruitmentForm">
-                <label for="nickname">Nick w grze:</label>
-                <input type="text" id="nickname" required>
-
-                <label for="discord">Nick na Discordzie:</label>
-                <input type="text" id="discord" required>
-
-                <label for="role">Wybierz rolę:</label>
-                <select id="role" required>
-                    <option value="DPS">DPS</option>
-                    <option value="Tank">Tank</option>
-                    <option value="Healer">Healer</option>
-                </select>
-
-                <button type="submit">Zarejestruj się</button>
-            </form>
-            <p id="successMessage" style="display:none; color: green;">Dziękujemy za rejestrację!</p>
-            <p id="errorMessage" style="display:none; color: red;">Wystąpił błąd. Spróbuj ponownie później.</p>
-        </div>
-    </section>
-
-    <!-- Sekcja członków -->
-    <section id="czlonkowie" class="section">
-        <div class="container">
-            <h2>Członkowie Kompanii</h2>
-            <div id="membersList"></div>
-        </div>
-    </section>
-
-    <!-- Sekcja wydarzeń -->
+    <!-- Sekcja wydarzenia -->
     <section id="wydarzenia" class="section">
         <div class="container">
-            <h2>Wydarzenia</h2>
+            <h2>Wojny i Ekspedycje</h2>
             <div id="eventsList"></div>
         </div>
     </section>
 
-    <!-- Sekcja poradników -->
-    <section id="poradniki" class="section">
+    <!-- Sekcja rankingi -->
+    <section id="rankingi" class="section">
         <div class="container">
-            <h2>Poradniki</h2>
-            <div id="guidesList"></div>
+            <h2>Rankingi Kompanii</h2>
+            <div id="rankingsList"></div>
         </div>
     </section>
 
-    <!-- Sekcja galerii -->
+    <!-- Sekcja galeria -->
     <section id="galeria" class="section">
         <div class="container">
             <h2>Galeria</h2>
             <div id="galleryList"></div>
+        </div>
+    </section>
+
+    <!-- Sekcja aktualności -->
+    <section id="blog" class="section">
+        <div class="container">
+            <h2>Aktualności</h2>
+            <div id="newsList"></div>
+        </div>
+    </section>
+
+    <!-- Sekcja mapa -->
+    <section id="mapa" class="section">
+        <div class="container">
+            <h2>Mapa Świata</h2>
+            <div id="worldMap"></div>
         </div>
     </section>
 
