@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="pl">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Slavic Nation - New World</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
-
 <body>
+
     <!-- Nawigacja -->
     <header>
         <div class="navbar">
@@ -21,9 +21,8 @@
                     <li><a href="#czlonkowie">Członkowie</a></li>
                     <li><a href="#wydarzenia">Wydarzenia</a></li>
                     <li><a href="#rankingi">Rankingi</a></li>
-                    <li><a href="#galeria">Galeria</a></li>
                     <li><a href="#blog">Aktualności</a></li>
-                    <li><a href="#mapa">Mapa</a></li>
+                    <li><a href="#premium">VIP</a></li>
                 </ul>
             </nav>
         </div>
@@ -44,65 +43,50 @@
             <h2>Rekrutacja</h2>
             <form id="recruitForm" class="form">
                 <input type="text" id="name" placeholder="Imię" required>
-                <input type="text" id="role" placeholder="Rola w grze" required>
+                <input type="text" id="role" placeholder="Rola w grze (np. DPS)" required>
                 <button type="submit">Zarejestruj się</button>
             </form>
         </div>
     </section>
 
-    <!-- Sekcja członkowie -->
-    <section id="czlonkowie" class="section">
+    <!-- Sekcja VIP -->
+    <section id="premium" class="section premium">
         <div class="container">
-            <h2>Członkowie Kompanii</h2>
-            <div id="membersList"></div>
+            <h2>VIP Slavic Nation</h2>
+            <p>Zostań członkiem VIP i ciesz się ekskluzywnymi wydarzeniami oraz dostępem do specjalnych zasobów.</p>
+            <button class="cta-button">Dołącz do VIP</button>
         </div>
     </section>
 
-    <!-- Sekcja wydarzenia -->
+    <!-- Sekcja Wydarzenia -->
     <section id="wydarzenia" class="section">
         <div class="container">
-            <h2>Wojny i Ekspedycje</h2>
-            <div id="eventsList"></div>
+            <h2>Wydarzenia</h2>
+            <ul>
+                <li><strong>Wojna Terytorialna:</strong> 25 grudnia, 18:00</li>
+                <li><strong>Ekspedycja Bossa:</strong> 27 grudnia, 20:00</li>
+            </ul>
         </div>
     </section>
 
-    <!-- Sekcja rankingi -->
+    <!-- Ranking -->
     <section id="rankingi" class="section">
         <div class="container">
-            <h2>Rankingi Kompanii</h2>
-            <div id="rankingsList"></div>
+            <h2>Top Gracze</h2>
+            <ul>
+                <li>1. GraczX - 1500 Punktów</li>
+                <li>2. GraczY - 1200 Punktów</li>
+                <li>3. GraczZ - 1100 Punktów</li>
+            </ul>
         </div>
     </section>
 
-    <!-- Sekcja galeria -->
-    <section id="galeria" class="section">
-        <div class="container">
-            <h2>Galeria</h2>
-            <div id="galleryList"></div>
-        </div>
-    </section>
-
-    <!-- Sekcja aktualności -->
-    <section id="blog" class="section">
-        <div class="container">
-            <h2>Aktualności</h2>
-            <div id="newsList"></div>
-        </div>
-    </section>
-
-    <!-- Sekcja mapa -->
-    <section id="mapa" class="section">
-        <div class="container">
-            <h2>Mapa Świata</h2>
-            <div id="worldMap"></div>
-        </div>
-    </section>
-
+    <!-- Footer -->
     <footer>
         <div class="container">
             <p>&copy; 2024 Slavic Nation - Wszystkie prawa zastrzeżone</p>
         </div>
     </footer>
-</body>
 
+</body>
 </html>
