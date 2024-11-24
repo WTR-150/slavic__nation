@@ -1,54 +1,76 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const recruitmentForm = document.getElementById('recruitmentForm');
-    const successMessage = document.getElementById('successMessage');
-    const errorMessage = document.getElementById('errorMessage');
-    const membersList = document.getElementById('membersList');
+    // Przykładowe dane dla wydarzeń, rankingów, galerii i aktualności
+    const events = [
+        { title: 'Wojna o Teren', date: '2024-12-01', description: 'Wielka bitwa o zasoby na wyspie!' },
+        { title: 'Ekspedycja na Wschód', date: '2024-12-05', description: 'Podróż w nieznane w poszukiwaniu skarbów!' }
+    ];
+
+    const rankings = [
+        { name: 'Gracz1', role: 'DPS', score: 1500 },
+        { name: 'Gracz2', role: 'Tank', score: 1400 }
+    ];
+
+    const news = [
+        { title: 'Nowa wojna nadchodzi!', content: 'Zbliżają się intensywne walki w regionie...' },
+        { title: 'Wielka ekspedycja', content: 'Dołącz do ekspedycji, aby zdobyć potężne nagrody!' }
+    ];
+
+    const gallery = [
+        { img: 'https://yourimageurl.com/1.jpg', caption: 'Bitwa w lesie' },
+        { img: 'https://yourimageurl.com/2.jpg', caption: 'Eksploracja ruin' }
+    ];
+
+    // Generowanie wydarzeń
     const eventsList = document.getElementById('eventsList');
-    const guidesList = document.getElementById('guidesList');
-    const galleryList = document.getElementById('galleryList');
-
-    // Funkcja do dodawania członków do listy
-    function updateMembers() {
-        fetch('/members.json')
-            .then(response => response.json())
-            .then(data => {
-                membersList.innerHTML = data.map(member => `
-                    <div class="member">
-                        <h3>${member.nickname}</h3>
-                        <p>Discord: ${member.discord}</p>
-                        <p>Rola: ${member.role}</p>
-                    </div>
-                `).join('');
-            });
-    }
-
-    // Funkcja do obsługi formularza rekrutacyjnego
-    recruitmentForm.addEventListener('submit', (event) => {
-        event.preventDefault();
-        const nickname = document.getElementById('nickname').value;
-        const discord = document.getElementById('discord').value;
-        const role = document.getElementById('role').value;
-
-        const data = { nickname, discord, role };
-
-        fetch('/rekrutacja', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-        })
-        .then(response => response.json())
-        .then(() => {
-            successMessage.style.display = 'block';
-            errorMessage.style.display = 'none';
-            recruitmentForm.reset();
-            updateMembers(); // Odświeżenie listy członków
-        })
-        .catch(() => {
-            successMessage.style.display = 'none';
-            errorMessage.style.display = 'block';
-        });
+    events.forEach(event => {
+        const eventItem = document.createElement('div');
+        eventItem.classList.add('event-item');
+        eventItem.innerHTML = `
+            <h3>${event.title}</h3>
+            <p>${event.date}</p>
+            <p>${event.description}</p>
+        `;
+        eventsList.appendChild(eventItem);
     });
 
-    // Wywołanie funkcji na starcie, aby załadować listę członków
-    updateMembers();
+    // Generowanie rankingów
+    const rankingsList = document.getElementById('rankingsList');
+    rankings.forEach(player => {
+        const rankingItem = document.createElement('div');
+        rankingItem.classList.add('ranking-item');
+        rankingItem.innerHTML = `
+            <h3>${player.name}</h3>
+            <p>Rola: ${player.role}</p>
+            <p>Punkty: ${player.score}</p>
+        `;
+        rankingsList.appendChild(rankingItem);
+    });
+
+    // Generowanie galerii
+    const galleryList = document.getElementById('galleryList');
+    gallery.forEach(item => {
+        const galleryItem = document.createElement('div');
+        galleryItem.classList.add('gallery-item');
+        galleryItem.innerHTML = `
+            <img src="${item.img}" alt="${item.caption}" />
+            <p>${item.caption}</p>
+        `;
+        galleryList.appendChild(galleryItem);
+    });
+
+    // Generowanie aktualności
+    const newsList = document.getElementById('newsList');
+    news.forEach(newsItem => {
+        const newsElement = document.createElement('div');
+        newsElement.classList.add('news-item');
+        newsElement.innerHTML = `
+            <h3>${newsItem.title}</h3>
+            <p>${newsItem.content}</p>
+        `;
+        newsList.appendChild(newsElement);
+    });
+
+    // Generowanie mapy świata (symulacja)
+    const worldMap = document.getElementById('worldMap');
+    worldMap.innerHTML = '<p>Interaktywna mapa świata pojawi się tutaj...</p>';
 });
