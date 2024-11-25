@@ -1,120 +1,136 @@
-/* Ogólne style */
-body {
-    font-family: 'Arial', sans-serif;
+/* Import czcionki */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+/* Reset */
+* {
     margin: 0;
     padding: 0;
-    color: #f1f1f1;
-    background-color: #121212;
-    overflow-x: hidden;
-    line-height: 1.6;
+    box-sizing: border-box;
 }
 
-.hidden {
-    display: none;
+/* Globalne ustawienia */
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #f1f1f1;
+    background: url('new-world-bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    overflow-x: hidden;
+}
+
+/* Przycisk */
+.btn-primary {
+    padding: 12px 24px;
+    font-size: 1.1em;
+    background: linear-gradient(90deg, #007bff, #00d4ff);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(90deg, #0056cc, #00a8cc);
+    transform: scale(1.05);
 }
 
 /* Strona powitalna */
 .welcome-screen {
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5); /* półprzezroczyste tło */
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background: linear-gradient(135deg, #1e1e1e, #292929);
     text-align: center;
-    animation: fadeIn 1.5s ease-in-out;
+    animation: fadeIn 1s ease-out;
 }
 
-.welcome-content h1 {
+.welcome-screen .content {
+    max-width: 600px;
+    animation: zoomIn 1s ease;
+}
+
+.welcome-screen h1 {
     font-size: 3em;
-    margin-bottom: 10px;
-    color: #ffffff;
-}
-
-.welcome-content p {
-    font-size: 1.2em;
     margin-bottom: 20px;
-    color: #dddddd;
+    color: #fff;
 }
 
-.highlight {
-    color: #00ccff;
+.welcome-screen .highlight {
+    color: #00d4ff;
 }
 
-button.animated-button {
-    padding: 15px 30px;
+.welcome-screen p {
+    margin-bottom: 30px;
     font-size: 1.2em;
-    color: #ffffff;
-    background-color: #0066cc;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
+    color: #ccc;
 }
 
-button.animated-button:hover {
-    background-color: #0055aa;
-    transform: scale(1.05);
-}
-
-/* Sekcja formularza */
+/* Formularz */
 .form-screen {
-    padding: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 40px;
+    border-radius: 10px;
     max-width: 800px;
-    margin: 0 auto;
-    animation: slideIn 0.8s ease-in-out forwards;
+    margin: 40px auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    animation: slideIn 0.8s ease;
 }
 
-header {
+.form-container h1 {
     text-align: center;
-    margin-bottom: 30px;
-}
-
-header h1 {
     font-size: 2em;
-    color: #ffffff;
-}
-
-.form-section {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 label {
     display: block;
+    margin-bottom: 8px;
     font-weight: bold;
-    margin-bottom: 5px;
-}
-
-input, select, button {
-    width: 100%;
-    padding: 10px;
-    font-size: 1em;
-    border: none;
-    border-radius: 5px;
 }
 
 input, select {
-    background-color: #292929;
-    color: #f1f1f1;
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    border-radius: 5px;
+    border: 1px solid #333;
+    background: #1e1e1e;
+    color: #fff;
 }
 
-button {
-    background-color: #0066cc;
-    color: #ffffff;
-    cursor: pointer;
-    transition: background-color 0.3s;
+/* Opcje klas */
+.class-options {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
 }
 
-button:hover {
-    background-color: #0055aa;
+.class-option {
+    display: flex;
+    align-items: center;
+    font-size: 1.1em;
+}
+
+.class-option input {
+    margin-right: 10px;
+}
+
+.class-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
 }
 
 /* Lista członków */
-.member-list h2 {
-    margin-bottom: 10px;
+.member-list {
+    margin-top: 20px;
 }
 
 .member-list ul {
@@ -124,11 +140,10 @@ button:hover {
 
 .member-list li {
     padding: 10px;
-    background-color: #292929;
-    border: 1px solid #3e3e3e;
+    margin: 5px 0;
+    background: #252525;
     border-radius: 5px;
-    margin-bottom: 10px;
-    animation: fadeIn 0.8s ease-in-out;
+    animation: fadeIn 0.8s ease;
 }
 
 /* Animacje */
@@ -143,9 +158,20 @@ button:hover {
 
 @keyframes slideIn {
     from {
-        transform: translateX(100%);
+        transform: translateY(-100%);
     }
     to {
-        transform: translateX(0);
+        transform: translateY(0);
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
     }
 }
