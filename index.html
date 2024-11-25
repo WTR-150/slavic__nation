@@ -3,42 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kompania Rekrutacyjna - New World</title>
+    <title>Slavic_Nation - Rekrutacja</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Kompania Rekrutacyjna - New World</h1>
-    </header>
-    <main>
-        <section class="form-section">
-            <form id="recruitmentForm">
-                <div class="form-group">
-                    <label for="gameNick">Nick z gry:</label>
-                    <input type="text" id="gameNick" placeholder="Wpisz swój nick z gry" required>
-                </div>
-                <div class="form-group">
-                    <label for="discordNick">Nick na Discordzie:</label>
-                    <input type="text" id="discordNick" placeholder="Wpisz swój nick na Discordzie" required>
-                </div>
-                <div class="form-group">
-                    <label for="class">Wybierz klasę:</label>
-                    <select id="class" required>
-                        <option value="" disabled selected>-- Wybierz klasę --</option>
-                        <option value="Healer">Healer</option>
-                        <option value="Tank">Tank</option>
-                        <option value="DPS">DPS</option>
-                    </select>
-                </div>
-                <button type="submit">Zapisz</button>
-            </form>
-        </section>
+    <!-- Strona powitalna -->
+    <section id="welcomeScreen" class="welcome-screen">
+        <div class="welcome-content">
+            <h1>Witaj w kompanii <span class="highlight">Slavic_Nation</span></h1>
+            <p>Dołącz do nas i wspólnie podbijajmy świat New World!</p>
+            <button id="joinButton" class="animated-button">Dołącz do Slavic_Nation</button>
+        </div>
+    </section>
 
-        <section class="member-list">
-            <h2>Lista członków:</h2>
-            <ul id="membersList"></ul>
-        </section>
-    </main>
+    <!-- Sekcja z formularzem -->
+    <section id="formScreen" class="form-screen hidden">
+        <header>
+            <h1>Kompania <span class="highlight">Slavic_Nation</span> - Rekrutacja</h1>
+        </header>
+        <main>
+            <section class="form-section">
+                <form id="recruitmentForm">
+                    <div class="form-group">
+                        <label for="gameNick">Nick z gry:</label>
+                        <input type="text" id="gameNick" placeholder="Wpisz swój nick z gry" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="discordNick">Nick na Discordzie:</label>
+                        <input type="text" id="discordNick" placeholder="Wpisz swój nick na Discordzie" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="class">Wybierz klasę:</label>
+                        <select id="class" required>
+                            <option value="" disabled selected>-- Wybierz klasę --</option>
+                            <option value="Healer">Healer</option>
+                            <option value="Tank">Tank</option>
+                            <option value="DPS">DPS</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="animated-button">Zapisz</button>
+                </form>
+            </section>
+
+            <section class="member-list">
+                <h2>Lista członków:</h2>
+                <ul id="membersList"></ul>
+            </section>
+        </main>
+    </section>
     <script src="script.js"></script>
 </body>
 </html>
