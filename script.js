@@ -1,68 +1,43 @@
-document.addEventListener('DOMContentLoaded', function () {
+// Pobranie elementów HTML
+const membersList = document.getElementById('membersList');
+const recruitmentForm = document.getElementById('recruitmentForm');
 
-    const recruitForm = document.getElementById('recruitForm');
-    const eventsContainer = document.getElementById('events-list');
-    const membersList = document.getElementById('members-list');
-    const events = [
-        { title: 'Wojna o Terytorium', date: '25 grudnia, 18:00' },
-        { title: 'Expedycja na Bossów', date: '27 grudnia, 20:00' },
-        { title: 'PVP - Bitwa Królewska', date: '30 grudnia, 17:00' },
-    ];
+// Inicjalizacja listy członków z LocalStorage
+let members = JSON.parse(localStorage.getItem('members')) || [];
 
-    recruitForm.addEventListener('submit', handleRecruitmentFormSubmit);
+// Funkcja do wyświetlania listy członków
+function displayMembers() {
+    membersList.innerHTML = '';
+    members.forEach((member, index) => {
+        const li = document.createElement('li');
+        li.textContent = `${index + 1}. ${member.gameNick} (Discord: ${member.discordNick}) - Klasa: ${member.class}`;
+        membersList.appendChild(li);
+    });
+}
 
-    function handleRecruitmentFormSubmit(event) {
-        event.preventDefault();
-        
-        const name = document.getElementById('name').value;
-        const role = document.getElementById('role').value;
+// Obsługa formularza rekrutacyjnego
+recruitmentForm.addEventListener('submit', (event) => {
+    event.preventDefault();
 
-        if (name && role) {
-            let members = JSON.parse(localStorage.getItem('members')) || [];
-            members.push({ name, role });
-            localStorage.setItem('members', JSON.stringify(members));
+    // Pobranie danych z formularza
+    const gameNick = document.getElementById('gameNick').value.trim();
+    const discordNick = document.getElementById('discordNick').value.trim();
+    const selectedClass = document.getElementById('class').value;
 
-            recruitForm.reset();
-            showNotification('Zarejestrowano pomyślnie!', 'success');
-            updateMembersList();
-        } else {
-            showNotification('Proszę wypełnić wszystkie pola!', 'error');
-        }
+    if (gameNick && discordNick && selectedClass) {
+        // Dodanie nowego członka
+        members.push({ gameNick, discordNick, class: selectedClass });
+
+        // Zapis do LocalStorage
+        localStorage.setItem('members', JSON.stringify(members));
+
+        // Wyczyszczenie formularza
+        recruitmentForm.reset();
+
+        // Aktualizacja listy członków
+        displayMembers();
     }
-
-    function showNotification(message, type) {
-        const notification = document.createElement('div');
-        notification.classList.add('notification', type);
-        notification.textContent = message;
-        document.body.appendChild(notification);
-
-        setTimeout(() => notification.remove(), 4000);
-    }
-
-    function updateMembersList() {
-        membersList.innerHTML = '';
-        let members = JSON.parse(localStorage.getItem('members')) || [];
-        
-        if (members.length === 0) {
-            membersList.innerHTML = '<li>Brak zarejestrowanych członków.</li>';
-        } else {
-            members.forEach((member, index) => {
-                const memberElement = document.createElement('li');
-                memberElement.innerHTML = `${index + 1}. <strong>${member.name}</strong> - <em>${member.role}</em>`;
-                membersList.appendChild(memberElement);
-            });
-        }
-    }
-
-    function loadEvents() {
-        eventsContainer.innerHTML = '';
-        events.forEach(event => {
-            const eventElement = document.createElement('li');
-            eventElement.innerHTML = `<strong>${event.title}</strong>: ${event.date}`;
-            eventsContainer.appendChild(eventElement);
-        });
-    }
-
-    loadEvents();
-    updateMembersList();
 });
+
+// Wyświetlenie listy członków przy załadowaniu strony
+displayMembers();
