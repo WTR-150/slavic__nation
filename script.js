@@ -1,16 +1,18 @@
-// Elementy HTML
+// Elementy DOM
 const welcomeScreen = document.getElementById('welcomeScreen');
 const formScreen = document.getElementById('formScreen');
 const joinButton = document.getElementById('joinButton');
 const recruitmentForm = document.getElementById('recruitmentForm');
 const membersList = document.getElementById('membersList');
 
-// Lista członków (inicjalizacja z LocalStorage)
+// Lista członków
 let members = JSON.parse(localStorage.getItem('members')) || [];
 
-// Przejście z ekranu powitalnego do formularza
+// Przejście do formularza po kliknięciu przycisku
 joinButton.addEventListener('click', () => {
+    // Dodaj klasę "hidden" do ekranu powitalnego
     welcomeScreen.classList.add('hidden');
+    // Usuń klasę "hidden" z ekranu formularza
     formScreen.classList.remove('hidden');
 });
 
@@ -19,34 +21,28 @@ function displayMembers() {
     membersList.innerHTML = '';
     members.forEach((member, index) => {
         const li = document.createElement('li');
-        li.textContent = `${index + 1}. ${member.gameNick} (Discord: ${member.discordNick}) - Klasa: ${member.class}`;
+        li.textContent = `${index + 1}. ${member.gameNick} (${member.discordNick}) - Klasa: ${member.class}`;
         membersList.appendChild(li);
     });
 }
 
-// Obsługa formularza
+// Obsługa formularza rekrutacyjnego
 recruitmentForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
     // Pobranie danych z formularza
     const gameNick = document.getElementById('gameNick').value.trim();
     const discordNick = document.getElementById('discordNick').value.trim();
-    const selectedClass = document.getElementById('class').value;
+    const selectedClass = document.querySelector('input[name="class"]:checked').value;
 
+    // Walidacja i dodanie użytkownika
     if (gameNick && discordNick && selectedClass) {
-        // Dodanie nowego członka
         members.push({ gameNick, discordNick, class: selectedClass });
-
-        // Zapisanie w LocalStorage
         localStorage.setItem('members', JSON.stringify(members));
-
-        // Wyczyszczenie formularza
-        recruitmentForm.reset();
-
-        // Aktualizacja listy
         displayMembers();
+        recruitmentForm.reset();
     }
 });
 
-// Wyświetlenie członków przy załadowaniu strony
+// Inicjalizacja listy członków
 displayMembers();
