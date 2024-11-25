@@ -1,11 +1,20 @@
-// Pobranie elementów HTML
-const membersList = document.getElementById('membersList');
+// Elementy HTML
+const welcomeScreen = document.getElementById('welcomeScreen');
+const formScreen = document.getElementById('formScreen');
+const joinButton = document.getElementById('joinButton');
 const recruitmentForm = document.getElementById('recruitmentForm');
+const membersList = document.getElementById('membersList');
 
-// Inicjalizacja listy członków z LocalStorage
+// Lista członków (inicjalizacja z LocalStorage)
 let members = JSON.parse(localStorage.getItem('members')) || [];
 
-// Funkcja do wyświetlania listy członków
+// Przejście z ekranu powitalnego do formularza
+joinButton.addEventListener('click', () => {
+    welcomeScreen.classList.add('hidden');
+    formScreen.classList.remove('hidden');
+});
+
+// Wyświetlanie listy członków
 function displayMembers() {
     membersList.innerHTML = '';
     members.forEach((member, index) => {
@@ -15,7 +24,7 @@ function displayMembers() {
     });
 }
 
-// Obsługa formularza rekrutacyjnego
+// Obsługa formularza
 recruitmentForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
@@ -28,16 +37,16 @@ recruitmentForm.addEventListener('submit', (event) => {
         // Dodanie nowego członka
         members.push({ gameNick, discordNick, class: selectedClass });
 
-        // Zapis do LocalStorage
+        // Zapisanie w LocalStorage
         localStorage.setItem('members', JSON.stringify(members));
 
         // Wyczyszczenie formularza
         recruitmentForm.reset();
 
-        // Aktualizacja listy członków
+        // Aktualizacja listy
         displayMembers();
     }
 });
 
-// Wyświetlenie listy członków przy załadowaniu strony
+// Wyświetlenie członków przy załadowaniu strony
 displayMembers();
