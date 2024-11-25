@@ -5,52 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Slavic_Nation - Rekrutacja</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Strona powitalna -->
+    <!-- Ekran powitalny -->
     <section id="welcomeScreen" class="welcome-screen">
-        <div class="welcome-content">
-            <h1>Witaj w kompanii <span class="highlight">Slavic_Nation</span></h1>
-            <p>Dołącz do nas i wspólnie podbijajmy świat New World!</p>
-            <button id="joinButton" class="animated-button">Dołącz do Slavic_Nation</button>
+        <div class="content">
+            <h1>Dołącz do <span class="highlight">Slavic_Nation</span></h1>
+            <p>Twórz historię w świecie New World z najlepszą kompanią!</p>
+            <button id="joinButton" class="btn-primary">Rozpocznij</button>
         </div>
     </section>
 
-    <!-- Sekcja z formularzem -->
+    <!-- Formularz rekrutacyjny -->
     <section id="formScreen" class="form-screen hidden">
-        <header>
-            <h1>Kompania <span class="highlight">Slavic_Nation</span> - Rekrutacja</h1>
-        </header>
-        <main>
-            <section class="form-section">
-                <form id="recruitmentForm">
-                    <div class="form-group">
-                        <label for="gameNick">Nick z gry:</label>
-                        <input type="text" id="gameNick" placeholder="Wpisz swój nick z gry" required>
+        <div class="form-container">
+            <h1>Formularz rekrutacyjny</h1>
+            <form id="recruitmentForm">
+                <div class="form-group">
+                    <label for="gameNick">Nick z gry:</label>
+                    <input type="text" id="gameNick" placeholder="Wprowadź swój nick" required>
+                </div>
+                <div class="form-group">
+                    <label for="discordNick">Nick na Discordzie:</label>
+                    <input type="text" id="discordNick" placeholder="Wprowadź nick na Discordzie" required>
+                </div>
+                <div class="form-group">
+                    <label for="class">Wybierz klasę:</label>
+                    <div class="class-options">
+                        <label class="class-option">
+                            <input type="radio" name="class" value="Healer" required>
+                            <img src="healer-icon.png" alt="Healer" class="class-icon">
+                            Healer
+                        </label>
+                        <label class="class-option">
+                            <input type="radio" name="class" value="Tank" required>
+                            <img src="tank-icon.png" alt="Tank" class="class-icon">
+                            Tank
+                        </label>
+                        <label class="class-option">
+                            <input type="radio" name="class" value="DPS" required>
+                            <img src="dps-icon.png" alt="DPS" class="class-icon">
+                            DPS
+                        </label>
                     </div>
-                    <div class="form-group">
-                        <label for="discordNick">Nick na Discordzie:</label>
-                        <input type="text" id="discordNick" placeholder="Wpisz swój nick na Discordzie" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="class">Wybierz klasę:</label>
-                        <select id="class" required>
-                            <option value="" disabled selected>-- Wybierz klasę --</option>
-                            <option value="Healer">Healer</option>
-                            <option value="Tank">Tank</option>
-                            <option value="DPS">DPS</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="animated-button">Zapisz</button>
-                </form>
-            </section>
-
-            <section class="member-list">
+                </div>
+                <button type="submit" class="btn-primary">Zapisz</button>
+            </form>
+            <div class="member-list">
                 <h2>Lista członków:</h2>
                 <ul id="membersList"></ul>
-            </section>
-        </main>
+            </div>
+        </div>
     </section>
+
     <script src="script.js"></script>
 </body>
 </html>
