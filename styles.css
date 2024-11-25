@@ -1,122 +1,90 @@
-/* Global styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* Ogólne style */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #1c1c1c;
+    background-color: #121212;
     color: #f1f1f1;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
 }
 
-/* Header */
+/* Nagłówek */
 header {
-    background-color: #2c3e50;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-header h1 {
-    font-size: 2rem;
-    color: #f39c12;
-}
-header nav ul {
-    display: flex;
-    list-style: none;
-}
-header nav ul li {
-    margin-left: 20px;
-}
-header nav ul li a {
-    color: #f1f1f1;
-    text-decoration: none;
-    font-size: 1.2rem;
-    transition: color 0.3s;
-}
-header nav ul li a:hover {
-    color: #f39c12;
-}
-
-/* Hero Section */
-.hero {
-    background: url('https://example.com/newworld-bg.jpg') no-repeat center center;
-    background-size: cover;
-    height: 600px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background-color: #1e1e1e;
+    padding: 20px 0;
     text-align: center;
 }
-.hero h2 {
-    font-size: 3rem;
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+    color: #ffffff;
+}
+
+/* Główna sekcja */
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Formularz */
+.form-section {
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input, select, button {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+}
+
+input, select {
+    background-color: #292929;
     color: #f1f1f1;
 }
-.hero p {
-    font-size: 1.5rem;
-    color: #ecf0f1;
-}
-.hero .cta-btn {
-    padding: 10px 30px;
-    background-color: #f39c12;
-    color: #333;
-    text-decoration: none;
-    font-size: 1.2rem;
-    border-radius: 5px;
+
+button {
+    background-color: #0066cc;
+    color: #ffffff;
+    cursor: pointer;
     transition: background-color 0.3s;
 }
-.hero .cta-btn:hover {
-    background-color: #e67e22;
+
+button:hover {
+    background-color: #0055aa;
 }
 
-/* Form & Recruitment Section */
-form {
-    display: flex;
-    flex-direction: column;
-    max-width: 400px;
-    margin: 0 auto;
-    background-color: #34495e;
-    padding: 20px;
-    border-radius: 10px;
-}
-form input, form select {
-    margin-bottom: 15px;
-    padding: 10px;
-    background-color: #2c3e50;
-    color: #f1f1f1;
-    border: none;
-    border-radius: 5px;
-}
-form button {
-    padding: 12px;
-    background-color: #f39c12;
-    color: #333;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-form button:hover {
-    background-color: #e67e22;
+/* Lista członków */
+.member-list h2 {
+    margin-bottom: 10px;
+    color: #ffffff;
 }
 
-/* List Styles */
-ul {
+.member-list ul {
     list-style: none;
     padding: 0;
-    margin: 0;
-}
-ul li {
-    background-color: #34495e;
-    padding: 15px;
-    margin-bottom: 10px;
-    border-radius: 5px;
 }
 
-/* Footer */
-footer {
-    background-color: #2c3e50;
-    color: #f1f1f1;
-    text-align: center;
-    padding: 20px;
+.member-list li {
+    padding: 10px;
+    background-color: #292929;
+    border: 1px solid #3e3e3e;
+    border-radius: 5px;
+    margin-bottom: 10px;
 }
